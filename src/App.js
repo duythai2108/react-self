@@ -1,96 +1,51 @@
-// import Button from "./components/button/Button";
-// import { GlobalStyles } from "./GlobalStyles";
-// import Card from "./components/card/Card";
-// import Card2 from "./components/card/Card2";
-// import CardList from "./components/card/CardList";
-// import CardTailwind from "./components/card/CardTailwind";
-import React, { useEffect, useRef, useState } from "react";
-// import Form from "./components/form/Form.js";
-// import MovieSearchApp from "./components/MovieSearchApp.js";
-// import SignupForm from "./components/form/SignupForm.js";
-// import SignupFormV2 from "./components/form/SignupFormV2.js";
-// import SignupFormFinal from "./components/form/SignupFormFinal.js";
-// import SignupFormHook from "./components/form/SignupFormHook.js";
-import { Fragment } from "react";
-// import Modal from "./components/modal/Modal.js";
-// import Dropdown from "./components/Dropdown.js";
-import DropdownPortal from "./components/DropdownPortal.js";
-import Tooltip from "./components/tooltip/Tooltip.js";
-// import HackerNews from "./components/news/HackerNews";
-// import HackerNewsWithReducer from "./components/news/HackerNewsWithReducer";
-// import StopWatch from "./components/StopWatch";
+import React, { Fragment, createContext, useContext, useState } from "react";
+import { CountProvider, useCount } from "./contexts/countContext";
+import HeaderMain from "./components/HeaderMain";
+import { AuthProvider } from "./contexts/authContext";
+import { GalleryProvider } from "./contexts/gallery-context";
+import PhotoList from "./components/gallery/PhotoList";
+import CartList from "./components/gallery/CartList";
+// import Modal from "./components/modal/Modal";
+// import Portal from "./components/Portal";
+// import ModalBase from "./components/modal/ModalBase";
 
-// import TextAreaAutoResize from "./components/TextAreaAutoResize";
-// import Dropdown from "./components/Dropdown";
-// import Blog from "./components/Blog";
-// import Header from "./components/Header";
-// import Timer from "./components/Timer";
-// import Counter from "./components/counter/Counter";
-// import Photos from "./components/photo/Photos";
-// import { ThemeProvider } from "styled-components";
-// const theme = {
-//   colors: {
-//     blue: "#2979ff",
-//   },
-//   orange: "#ffa400",
-// };
-// import Game from "./components/tictactoe/Game";
-
-// JSX: Javascript XML
-// ES6
-// Babel
-/* 
-  * element = <div id= "root">Hello word </div>: JSX
-  *
-
-*/
-// function Feature() {
+// function CountDisplay() {
+//   const [count] = useCount();
+//   // console.log("🚀 ~ file: App.js:16 ~ CountDisplay ~ context:", context)
+//   return <div>The count is: {count}</div>;
+// }
+// function Counter() {
+//   const [, setCount] = useCount();
+//   // const setCount = () => {};
+//   const increment = () => setCount((c) => c + 1);
 //   return (
-//     <div className="feature">
-//       <img src="" alt="" srcset="" className="feature-image" />
-//       <h3 className="feature-title">Title</h3>
-//       <p className="feature-desc">
-//         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
-//         autem atque accusantium consequatur dicta in repudiandae, quasi
-//         laudantium animi nesciunt asperiores nostrum possimus dolores cupiditate
-//         natus quidem velit facilis consequuntur.
-//       </p>
-//     </div>
+//     <button
+//       onClick={increment}
+//       className="p-4 rounded-lg text-white font-semibold bg-purple-400"
+//     >
+//       Increment count
+//     </button>
 //   );
 // }
-// parent component
-
-function App() {
-  // const [showModal, setShowModal] = useState(false);
+const App = () => {
   return (
     <Fragment>
-      {/* <div className="relative z-0">
-        <Modal open={showModal} handleClose={() => setShowModal(false)}></Modal>
-      </div>
-      <button
-        className="m-5 p-4 bg-green-500 text-white rounded-lg"
-        onClick={() => setShowModal(true)}
-      >
-        Show modal
-      </button>
-      <div className="relative z-30">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi quod
-        repellat esse libero at sint cum, hic numquam rerum odio. Unde eveniet
-        illo explicabo debitis cumque ipsam soluta velit assumenda!
+      {/* <div className="p-5 flex items-center justify-center gap-x-5">
+        <CountProvider>
+          <CountDisplay></CountDisplay>
+          <Counter></Counter>
+        </CountProvider>
       </div> */}
-      {/* su ly portal voi overflow hidden */}
-      {/* <div className="overflow-hidden p-5">
-        <DropdownPortal></DropdownPortal>
-      </div> */}
-      {/* Tooltip with portal */}
-      {/* <div className="p-16 mt-16 overflow-hidden">
-        <Tooltip text="Hover me">This is a tooltip content</Tooltip>
-      </div> */}
+      {/* Bai tap context */}
+      <AuthProvider>
+        <GalleryProvider>
+          <HeaderMain></HeaderMain>
+          <PhotoList></PhotoList>
+          <CartList></CartList>
+        </GalleryProvider>
+      </AuthProvider>
     </Fragment>
   );
-}
-// Props -> Propertise
+};
 
-//* Rendering list
-// getBoundingCLientRect
 export default App;
